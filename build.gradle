@@ -1,0 +1,60 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+
+group = 'net.fybertech.hopperducts'
+version = '1.5-1.20.1'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+sourceSets {
+    gameTest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        configureEach {
+            property 'forge.logging.console.level', 'info'
+            mods {
+                hopperducts { source sourceSets.main }
+            }
+        }
+        client {
+            workingDirectory project.file('run/client')
+        }
+        server {
+            workingDirectory project.file('run/server')
+            args '--nogui'
+        }
+        gameTestServer {
+            workingDirectory project.file('run/gameTestServer')
+            property 'forge.enabledGameTestNamespaces', 'hopperducts'
+            mods {
+                hopperducts { source sourceSets.gameTest }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.28'
+}
+
+tasks.named('processResources', ProcessResources) {
+    inputs.property 'modVersion', project.version
+    filesMatching('META-INF/mods.toml') {
+        expand modVersion: project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('jar', Jar) {
+    finalizedBy 'reobfJar'
+}

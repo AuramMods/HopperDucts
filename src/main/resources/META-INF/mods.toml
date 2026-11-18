@@ -1,0 +1,25 @@
+modLoader = "javafml"
+loaderVersion = "[47,48)"
+license = "CC BY-NC-ND 3.0 (original release)"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/hopper-ducts"
+
+[[mods]]
+modId = "hopperducts"
+version = "${modVersion}"
+displayName = "Hopper Ducts"
+authors = "FyberOptic"
+description = "Hopper ducts transport items in any direction. Grated hoppers filter items."
+
+[[dependencies.hopperducts]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.4.28,48)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.hopperducts]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.20.2)"
+ordering = "NONE"
+side = "BOTH"

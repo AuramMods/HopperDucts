@@ -1,0 +1,3 @@
+/gradlew text eol=lf
+/gradlew.bat text eol=crlf
+/src/main/resources/README.txt -text whitespace=-trailing-space
