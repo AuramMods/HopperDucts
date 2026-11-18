@@ -13,7 +13,7 @@ description = "Hopper ducts transport items in any direction. Grated hoppers fil
 [[dependencies.hopperducts]]
 modId = "forge"
 mandatory = true
-versionRange = "[47.4.28,48)"
+versionRange = "[47.4.10,48)"
 ordering = "NONE"
 side = "BOTH"
 
